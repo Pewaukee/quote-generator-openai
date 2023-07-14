@@ -8,7 +8,7 @@ export default function Info() {
       </h2>
       <h1 className='text-3xl font-space-mono text-center'>GENERATE</h1>
       <h2 className='text-2xl font-space-mono text-center pt-4'>
-        to get an AI generated quote!
+        to get an AI generated quote using OpenAI&apos;s API!
       </h2>
     </div>
   );
