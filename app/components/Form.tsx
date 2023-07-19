@@ -7,10 +7,10 @@ import React, { useEffect, useState } from 'react';
 export default function Form() {
   const [prompt, setPrompt] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const { loading, createPrompt } = generatePrompt();
+  const [loading, setLoading] = useState(false);
+  const { createPrompt } = generatePrompt(); // generate the closure
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setPrompt(e.target.value);
   };
 
@@ -23,8 +23,9 @@ export default function Form() {
   }, [prompt]);
 
   const handleClick = async () => {
-    console.log('clicked');
-    await createPrompt({prompt});
+    setLoading(true);
+    await createPrompt({ prompt });
+    setLoading(false);
   };
 
   return (
