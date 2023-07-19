@@ -1,7 +1,7 @@
 'use client';
 
 import generatePrompt from '@/pages/api/generate';
-import { LinearProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 export default function Form() {
@@ -24,7 +24,8 @@ export default function Form() {
 
   const handleClick = async () => {
     setLoading(true);
-    await createPrompt({ prompt });
+    const response = await createPrompt({ prompt });
+    console.log(response);
     setLoading(false);
   };
 
@@ -41,7 +42,7 @@ export default function Form() {
         disabled={disabled || loading}
         onClick={handleClick}
       >
-        {loading ? <LinearProgress /> : 'GENERATE'}
+        {loading ? <CircularProgress /> : 'GENERATE'}
       </button>
     </div>
   );
