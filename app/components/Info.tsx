@@ -12,7 +12,7 @@ export default function Info() {
         to get an AI generated quote using OpenAI&apos;s API!
       </h2>
       <p className='mt-6'>
-        Prompt format: 'Generate a quote about &#123;SUBJECT&#125; inspired by &#123;INSPRIRATION&#125;.'
+        Prompt format: &apos;Generate a quote about &#123;SUBJECT&#125; inspired by &#123;INSPRIRATION&#125;.&apos;
       </p>
     </div>
   );
