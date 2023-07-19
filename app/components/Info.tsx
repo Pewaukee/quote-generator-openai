@@ -1,4 +1,5 @@
 import React from 'react';
+import {Popover} from '@mui/material';
 
 export default function Info() {
   return (
@@ -10,6 +11,9 @@ export default function Info() {
       <h2 className='text-2xl font-space-mono text-center pt-4'>
         to get an AI generated quote using OpenAI&apos;s API!
       </h2>
+      <p className='mt-6'>
+        Prompt format: 'Generate a quote about &#123;SUBJECT&#125; inspired by &#123;INSPRIRATION&#125;.'
+      </p>
     </div>
   );
 }

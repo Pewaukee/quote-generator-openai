@@ -31,18 +31,27 @@ export default function Form() {
 
   return (
     <div className='w-full px-6 py-4 flex flex-col items-center justify-center'>
-      <input
-        type='text'
-        className='w-[50%] px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent text-black font-space-mono text-lg'
-        placeholder='Enter a prompt here...'
-        onChange={handleChange}
-      ></input>
+      <div className='grid grid-cols-2 gap-4 w-[50%]'>
+        <input
+          type='text'
+          className='w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent text-black font-space-mono text-lg'
+          placeholder='Enter a subject here...'
+          onChange={handleChange}
+        ></input>
+        <input
+          type='text'
+          className='w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent text-black font-space-mono text-lg'
+          placeholder='Enter an inspiration here...'
+          onChange={handleChange}
+        ></input>
+      </div>
+
       <button
-        className='mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold font-space-mono text-2xl py-2 px-4 rounded disabled:bg-gray-400'
+        className='mt-6 bg-blue-500 w-36 hover:bg-blue-700 text-white font-bold font-space-mono text-2xl py-2 px-4 rounded disabled:bg-gray-400'
         disabled={disabled || loading}
         onClick={handleClick}
       >
-        {loading ? <CircularProgress /> : 'GENERATE'}
+        {loading ? <CircularProgress className='h-24' /> : 'GENERATE'}
       </button>
     </div>
   );
