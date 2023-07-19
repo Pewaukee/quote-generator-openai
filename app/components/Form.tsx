@@ -1,16 +1,32 @@
 'use client';
 
-import React, { useState } from 'react';
+import generatePrompt from '@/pages/api/generate';
+import { CircularProgress } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 
 export default function Form() {
-
   const [prompt, setPrompt] = useState('');
+  const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
-  // configure more in backend
+  const { createPrompt } = generatePrompt(); // generate the closure
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setPrompt(e.target.value);
+  };
+
+  useEffect(() => {
+    if (prompt.length > 0) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [prompt]);
+
+  const handleClick = async () => {
+    setLoading(true);
+    const response = await createPrompt({ prompt });
+    console.log(response);
+    setLoading(false);
   };
 
   return (
@@ -22,9 +38,11 @@ export default function Form() {
         onChange={handleChange}
       ></input>
       <button
-      className='mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold font-space-mono text-2xl py-2 px-4 rounded'
+        className='mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold font-space-mono text-2xl py-2 px-4 rounded disabled:bg-gray-400'
+        disabled={disabled || loading}
+        onClick={handleClick}
       >
-        Submit
+        {loading ? <CircularProgress /> : 'GENERATE'}
       </button>
     </div>
   );
